@@ -5,6 +5,11 @@
   "permissions": ["webRequest", "webRequestBlocking",
                   "*://*.lightning.force.com/*","*://*.my.salesforce.com/*",
               	"tabs","history"],
+  "icons": { 
+    "16":"Lightning-Classic-128.png", 
+    "48":"Lightning-Classic-128.png", 
+    "128":"Lightning-Classic-128.png" 
+  }, 
   "background": {
     "scripts": ["background.js"]
   },
