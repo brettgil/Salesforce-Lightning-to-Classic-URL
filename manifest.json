@@ -1,0 +1,13 @@
+{
+  "name": "Salesforce Lightning to Classic URL",
+  "version": "1.0",
+  "description": "Fixes Lightning URLs for Classic only users",
+  "permissions": ["webRequest", "webRequestBlocking",
+                  "*://*.lightning.force.com/*","*://*.my.salesforce.com/*",
+              	"tabs","history"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "manifest_version": 2
+}
