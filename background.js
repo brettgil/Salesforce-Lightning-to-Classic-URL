@@ -34,24 +34,24 @@ function parseURL(url) {
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
 
-    //alert("Lightning intercepted: " + info.url);
+  //alert("Lightning intercepted: " + info.url);
 
     //Stores all the urls during the redirect to the not allowed page.
     count++;
     urlStore[count] = info.url;
 
-    //alert(urlStore[count]);
+    //alert("URLStore: "+ urlStore[count]);
     parsedUrl = parseURL(urlStore[count]);
 
     //check if url is access denied page
     if(parsedUrl.pathname == "/lightning/access/userAccessDenied.jsp"){
-      //alert("redirecting "+urlStore[count-1]);
+  //alert("intended url: "+urlStore[count-1]);
       //get SF 18 or 15 digit ID
       getID = urlStore[count-1].match("[a-zA-Z0-9]{18}|[a-zA-Z0-9]{15}");
       
       //rebuild classic url
       redirectUrl = parsedUrl.protocol+"//"+parsedUrl.host+"/"+getID;
-      //alert(redirectUrl);
+  //alert("parsed final redirect url" + redirectUrl);
 
       //redirect to classic url
       return {redirectUrl: redirectUrl};
@@ -60,7 +60,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   // filters
   {
     urls: [
-      "*://*.my.salesforce.com/lightning/access/userAccessDenied.jsp",
+      "*://*.salesforce.com/lightning/access/userAccessDenied.jsp",
       "*://*.lightning.force.com/*"
     ]
   },
